@@ -18,6 +18,10 @@ class ClassroomsController < ApplicationController
   end
 
   def add_student
+    @classroom = Classroom.find(params[:classroom_id])
+    jrdev_id = User.find_by(name: params[:jrdev]).id
+    ClassroomJrdev.create(classroom_id: params[:classroom_id], jrdev_id: jrdev_id)
+    redirect_to classroom_path(@classroom)
   end
 
   # GET /classrooms/1/edit

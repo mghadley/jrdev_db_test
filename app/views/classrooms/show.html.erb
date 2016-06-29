@@ -10,8 +10,16 @@
   <%= @classroom.user.name %>
 </p>
 
+<div>
+	<% @classroom.jrdevs.each do |jrdev| %>
+		<%= jrdev.name %>
+	<% end %>
+</div>
+
 <%= form_tag(add_student_path, method: :post) do %>
 	<%= select_tag :jrdev, options_for_select(User.jrdev_names) %>
+	<%= hidden_field_tag :classroom_id, @classroom.id %>
+	<%= submit_tag %>
 <% end %>
 
 <%= link_to 'Edit', edit_classroom_path(@classroom) %> |
