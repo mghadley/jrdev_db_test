@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @classroom.name %>
+</p>
+
+<p>
+  <strong>Educator:</strong>
+  <%= @classroom.user.name %>
+</p>
+
+<%= form_tag(add_student_path, method: :post) do %>
+	<%= select_tag :jrdev, options_for_select(User.jrdev_names) %>
+<% end %>
+
+<%= link_to 'Edit', edit_classroom_path(@classroom) %> |
+<%= link_to 'Back', classrooms_path %>
