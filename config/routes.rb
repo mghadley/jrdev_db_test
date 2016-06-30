@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :mentors, controller: 'users', type: 'Mentor'
   resources :educators, controller: 'users', type: 'Educator'
   resources :jrdevs, controller: 'users', type: 'Jrdev'
+  resources :friendships, only: [:create, :destroy, :index]
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'

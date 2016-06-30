@@ -11,4 +11,10 @@
 			<%= submit_tag %>
 		<% end %>
 	<% end %>
+	<h3>Your Friends</h3>
+	<div>
+		<% current_user.friendships.each do |friendship| %>
+			<p><%=friendship.friend.name %></p>
+		<% end %>
+	</div>
 <% end %>
