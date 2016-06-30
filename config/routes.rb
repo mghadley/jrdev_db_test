@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   post 'add_student', to: 'classrooms#add_student'
+  post 'add_mentee', to: 'users/relationships#add_mentee'
 
   resources :classrooms
   resources :mentors, controller: 'users', type: 'Mentor'

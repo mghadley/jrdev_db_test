@@ -8,8 +8,11 @@
 </head>
 <body>
 <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-<% if current_user && current_user.type == 'Educator' %>
-	<%= link_to 'Create Classroom', new_classroom_path %>
+<% if current_user %>
+	<% if current_user.type == 'Educator' %>
+		<%= link_to 'Create Classroom', new_classroom_path %>
+	<% elsif current_user.type == 'Mentor' %>
+	<% end %>
 <% end %>
 <%= yield %>
 

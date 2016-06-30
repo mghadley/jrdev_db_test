@@ -1,4 +1,14 @@
 <%= link_to 'Sign Up', new_user_registration_path %>
 <% if current_user %>
 	<h1>Hello <%= current_user.name %></h1>
+	<% if current_user.type == 'Mentor' %>
+		<h3>Jr Devs You Mentor</h3>
+		<% current_user.jrdevs.each do |jrdev| %>
+			<%= jrdev.name %>
+		<% end %>
+		<%= form_tag(add_mentee_path, method: :post) do %>
+			<%= select_tag :jrdev, options_for_select(User.jrdevs.map{ |j| [j.name, j.id]}) %>
+			<%= submit_tag %>
+		<% end %>
+	<% end %>
 <% end %>
